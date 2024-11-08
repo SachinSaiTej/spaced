@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/express": "^5.0.0",
     "express": "^4.21.1",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "@spaced/db": "workspaces:*"
   }
 }

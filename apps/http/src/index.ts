@@ -1,5 +1,6 @@
 import express from 'express';
 import { router } from './routes/v1';
+import client from "@spaced/db/client";
 
 const app = express();
 
