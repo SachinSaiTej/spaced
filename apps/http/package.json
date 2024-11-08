@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -b",
+    "build": "npx esbuild src/index.ts --bundle --outfile=dist/index.js --platform=node --tsconfig=tsconfig.json",
     "start": "node dist/index.js"
   },
   "keywords": [],
@@ -11,9 +11,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@spaced/db": "*",
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "bcrypt": "^5.1.1",
     "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "typescript": "^5.6.3",
-    "@spaced/db": "workspaces:*"
+    "zod": "^3.23.8"
   }
 }
