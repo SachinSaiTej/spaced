@@ -44,7 +44,6 @@ router.post("/signup", async (req, res) => {
 
 router.post("/signin", async (req, res) => {
     const parsedData = SigninSchema.safeParse(req.body);
-    console.log("First Validation", parsedData, req.body);
     if (!parsedData.success) {
         res.status(403).json({
             message: "Validation Failed"
@@ -58,17 +57,14 @@ router.post("/signin", async (req, res) => {
                 username: parsedData.data.username
             }
         })
-        console.log("FindUnique", user, parsedData.data);
         if (!user) {
             res.status(403).json({ message: "User not found" })
-            console.log("403 - User not found");
             return;
         }
 
         const passwordMatch = await compare(parsedData.data.password, user.password);
         if (!passwordMatch) {
             res.status(403).json({ message: "Invalid password" })
-            console.log("403 - Invalid Password");
             return;
         }
 
