@@ -54,3 +54,16 @@ export const CreateMapSchema = z.object({
         y: z.number()
     }))
 })
+
+export const DeleteElementSchema = z.object({
+    id: z.string()
+})
+
+declare global {
+    namespace Express {
+        export interface Request {
+            userId?: string,
+            role?: "Admin" | "User"
+        }
+    }
+}
