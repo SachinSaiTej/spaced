@@ -16,7 +16,7 @@ adminRouter.post("/element", adminMiddleware, async (req, res) => {
             imageUrl: parsedData.data.imageUrl,
             width: parsedData.data.width,
             height: parsedData.data.height,
-            static: parsedData.data.static === 0 ? false : true
+            static: parsedData.data.static
         }
     })
 
@@ -42,6 +42,7 @@ adminRouter.put("/element/:elementId", adminMiddleware, async (req, res) => {
 });
 adminRouter.post("/avatar", adminMiddleware, async (req, res) => {
     const parsedData = CreateAvatarSchema.safeParse(req.body);
+    console.log("Came here for admin avatar")
     if (!parsedData.success) {
         res.status(400).json({ message: "Validation Failed" });
         return;
@@ -53,6 +54,8 @@ adminRouter.post("/avatar", adminMiddleware, async (req, res) => {
             name: parsedData.data.name
         }
     })
+
+    console.log("Created avatar", avatar);
 
     res.json({ id: avatar.id });
 });
@@ -77,6 +80,8 @@ adminRouter.post("/map", adminMiddleware, async (req, res) => {
             }
         }
     });
+
+    console.log("Created Map", map);
 
     res.json({ id: map.id });
 });

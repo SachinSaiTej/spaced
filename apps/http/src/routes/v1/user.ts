@@ -23,12 +23,12 @@ userRouter.post("/metadata", userMiddleware, async (req, res) => {
         })
         res.json({ message: "Metadata updated" });
     } catch (error) {
-        res.status(500).json({ message: "Internal Server Error" });
+        res.status(400).json({ message: "Internal Server Error" });
     }
 });
 userRouter.get("/metadata/bulk", async (req, res) => {
     const userIdString = (req.query.ids ?? "[]") as string;
-    const userIds = (userIdString).slice(1, userIdString?.length - 2).split(",");
+    const userIds = (userIdString).slice(1, userIdString?.length - 1).split(",");
 
     const metadata = await client.user.findMany({
         where: {

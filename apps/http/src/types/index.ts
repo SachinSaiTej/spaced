@@ -19,7 +19,7 @@ export const CreateSpaceSchema = z.object({
     name: z.string(),
     // TODO : Custom function that validates 10^5x10^5 schema
     dimensions: z.string().regex(/^[0-9]{1,5}x[0-9]{1,5}$/),
-    mapId: z.string()
+    mapId: z.string().optional()
 })
 
 export const AddElementSchema = z.object({
@@ -33,7 +33,7 @@ export const CreateElementSchema = z.object({
     imageUrl: z.string(),
     width: z.number(),
     height: z.number(),
-    static: z.number()
+    static: z.boolean()
 })
 
 export const UpdateElementSchema = z.object({
