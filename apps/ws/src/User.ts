@@ -65,6 +65,7 @@ export class User {
                                 x: this.x,
                                 y: this.y
                             },
+                            userId: userId,
                             users: RoomManager.getInstance().rooms.get(spaceId)?.filter(x => x.id !== this.id)?.map(u => ({ id: u.id }))
                         }
                     });
